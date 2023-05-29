@@ -57,5 +57,9 @@ public class Medico {
 		
 		
 	}
+
+	public void inativar() {
+		this.ativo = false;
+	}
 	
 }
