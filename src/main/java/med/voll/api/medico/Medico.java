@@ -30,7 +30,7 @@ public class Medico {
 	@Embedded
 	private Endereco endereço;
 	
-	public Medico(DadosCadastroMedico dados) {
+	public Medico(MedicoCadastrarDTO dados) {
 		this.ativo = true;
 		this.nome = dados.nome();
 		this.email = dados.email();
@@ -41,7 +41,7 @@ public class Medico {
 		
 	}
 
-	public void atualizarInformacoes(@Valid DadosAtualizarMedico dados) {
+	public void atualizarInformacoes(@Valid MedicoAtualizarDTO dados) {
 		
 		if (dados.nome() != null) {
 		this.nome = dados.nome();
