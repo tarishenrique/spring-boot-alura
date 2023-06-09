@@ -7,6 +7,7 @@ import med.voll.api.medico.MedicoListarDTO;
 import med.voll.api.medico.Medico;
 import med.voll.api.medico.MedicoRepository;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.validation.Valid;
 
@@ -35,8 +37,13 @@ public class MedicoController {
 	
     @PostMapping("/medicos")
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid MedicoCadastrarDTO dados){
-        repository.save(new Medico(dados));
+    public ResponseEntity cadastrar(@RequestBody @Valid MedicoCadastrarDTO dados, UriComponentsBuilder uriBuilder){
+        Medico medico = new Medico(dados);
+    	repository.save(medico);
+		
+        URI uri = uriBuilder.path("/api/v1/medicos/{id}").buildAndExpand(medico.getId()).toUri();
+        
+        return ResponseEntity.created(uri).body(new MedicoDetalhamentoDTO(medico));
 
     }
     
