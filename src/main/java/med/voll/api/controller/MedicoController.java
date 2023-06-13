@@ -47,10 +47,6 @@ public class MedicoController {
 
     }
     
-//    public Medico criarMedico(Medico medico ) {
-//    	return repository.save(medico);
-//    }
-    
     @GetMapping("/medicos")
     public ResponseEntity<Page<MedicoListarDTO>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
     	
@@ -77,11 +73,14 @@ public class MedicoController {
     	return ResponseEntity.noContent().build();
     }
     
-//    @DeleteMapping("/medicos/{id}")
-//    @Transactional
-//    public void excluir(@PathVariable Long id) {
-//    	repository.deleteById(id);
-//    }
+    @GetMapping("/medicos/{id}")
+    public ResponseEntity listarPorId(@PathVariable Long id) {
+    	Medico medico = repository.getReferenceById(id);
+    	
+    	return ResponseEntity.ok(new MedicoDetalhamentoDTO(medico));
+    }
+    
+
 
 
 }
