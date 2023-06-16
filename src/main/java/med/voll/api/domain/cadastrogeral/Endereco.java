@@ -1,4 +1,4 @@
-package med.voll.api.cadastrogeral;
+package med.voll.api.domain.cadastrogeral;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

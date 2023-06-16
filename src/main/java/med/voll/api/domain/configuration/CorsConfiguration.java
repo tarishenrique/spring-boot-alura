@@ -1,4 +1,4 @@
-package med.voll.api.configuration;
+package med.voll.api.domain.configuration;
 
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
