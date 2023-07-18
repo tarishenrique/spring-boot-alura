@@ -2,7 +2,7 @@ package med.voll.api.controller;
 
 import med.voll.api.domain.medico.MedicoAtualizarDTO;
 import med.voll.api.domain.medico.MedicoCadastrarDTO;
-import med.voll.api.domain.medico.MedicoDetalhamentoDTO;
+import med.voll.api.domain.medico.MedicoDetalharDTO;
 import med.voll.api.domain.medico.MedicoListarDTO;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.medico.MedicoRepository;
@@ -42,7 +42,7 @@ public class MedicoController {
 		
         URI uri = uriBuilder.path("/api/v1/medicos/{id}").buildAndExpand(medico.getId()).toUri();
         
-        return ResponseEntity.created(uri).body(new MedicoDetalhamentoDTO(medico));
+        return ResponseEntity.created(uri).body(new MedicoDetalharDTO(medico));
 
     }
     
@@ -60,7 +60,7 @@ public class MedicoController {
     	
     	Medico medico = repository.getReferenceById(dados.id()) ;
     	medico.atualizarInformacoes(dados);
-		return ResponseEntity.ok(new MedicoDetalhamentoDTO(medico));
+		return ResponseEntity.ok(new MedicoDetalharDTO(medico));
     }
     
     @DeleteMapping("/medicos/{id}")
@@ -76,7 +76,7 @@ public class MedicoController {
     public ResponseEntity listarPorId(@PathVariable Long id) {
     	Medico medico = repository.getReferenceById(id);
     	
-    	return ResponseEntity.ok(new MedicoDetalhamentoDTO(medico));
+    	return ResponseEntity.ok(new MedicoDetalharDTO(medico));
     }
     
 

@@ -30,7 +30,7 @@ public class Paciente {
     private Endereco endereco;
     private Boolean ativo;
 
-    public Paciente(PacienteCadastroDTO dados) {
+    public Paciente(PacienteCadastrarDTO dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
@@ -44,7 +44,7 @@ public class Paciente {
      *
      * @param  dados  Objeto contento as informações atualizadas do paciente
      */
-    public void atualizarInformacoes(PacienteAtualizacaoDTO dados) {
+    public void atualizarInformacoes(PacienteAtualizarDTO dados) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }

@@ -1,12 +1,12 @@
 package med.voll.api.domain.paciente;
 
-public record PacienteListagemDTO(
+public record PacienteListarDTO(
 		Long id, 
 		String nome, 
 		String email, 
 		String cpf) {
 
-	public PacienteListagemDTO(Paciente paciente) {
+	public PacienteListarDTO(Paciente paciente) {
 		this(paciente.getId(), paciente.getNome(), paciente.getEmail(), paciente.getCpf());
 	}
 
