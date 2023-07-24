@@ -37,4 +37,9 @@ public class ConsultasAgendaService {
 		
 	}
 
+	private Medico escolherMedico(ConsultaAgendarDTO dados) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
