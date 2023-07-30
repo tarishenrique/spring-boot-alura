@@ -38,7 +38,17 @@ public class ConsultasAgendaService {
 	}
 
 	private Medico escolherMedico(ConsultaAgendarDTO dados) {
-		// TODO Auto-generated method stub
+		
+		if (dados.idMedico() != null) {
+			return medicoRepository.getReferenceById(dados.idMedico());
+		}
+		
+		if (dados.especialidade() == null) {
+			throw new ValidacaoException("Especialidade é obrigatória quando médico não for escolhido!");
+		}
+		
+		Medico medicoAleatorio = medicoRepository.escolherMedicoAleatorioLivreNaData(dados.especialidade(), dados.data());
+		
 		return null;
 	}
 
