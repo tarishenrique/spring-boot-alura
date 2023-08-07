@@ -4,10 +4,13 @@ import java.time.DayOfWeek;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+import org.springframework.stereotype.Component;
+
 import med.voll.api.domain.consulta.ConsultaAgendarDTO;
 import med.voll.api.infra.exception.ValidacaoException;
 
-public class ValidadorHorarioAntecendencia {
+@Component
+public class ValidadorHorarioAntecendencia implements ValidadorAgendamentoDeConsulta{
 	
 	public void validar(ConsultaAgendarDTO dados) {
 		LocalDateTime dataConsulta = dados.data();
