@@ -21,10 +21,10 @@ public class ConsultasAgendaService {
 	private MedicoRepository medicoRepository;
 	@Autowired
 	private PacienteRepository pacienteRepository;
-	
+	@Autowired
 	private List<ValidadorAgendamentoDeConsulta> validadores;
 	
-	public void agendar(ConsultaAgendarDTO dados){
+	public ConsultaDetalharDTO agendar(ConsultaAgendarDTO dados){
 		
 		if (!pacienteRepository.existsById(dados.idPaciente())) {
 			throw new ValidacaoException("Id do paciente informado não existe!");
@@ -41,6 +41,8 @@ public class ConsultasAgendaService {
 		Consulta consulta = new Consulta(null, medico, paciente, dados.data());
 		
 		consultaRepository.save(consulta);
+		
+		return new ConsultaDetalharDTO(consulta);
 		
 	}
 

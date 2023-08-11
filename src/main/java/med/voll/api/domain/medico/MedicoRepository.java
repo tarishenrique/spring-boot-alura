@@ -14,7 +14,7 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
 	@Query("""
 			select m from Medico m
 			where
-			m.ativo = 1
+			m.ativo = true
 			and
 			m.especialidade = :especialidade
 			and
@@ -34,6 +34,6 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
 			where
 			m.id = :id
 			""")
-	Boolean findAtivoById(Long idMedico);
+	Boolean findAtivoById(Long id);
 
 }
