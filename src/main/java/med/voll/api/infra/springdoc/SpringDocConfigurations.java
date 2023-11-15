@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
@@ -15,7 +17,13 @@ public class SpringDocConfigurations {
 		return new OpenAPI()
 				.components(new Components()
 						.addSecuritySchemes("bearer-key",
-								new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")));
+								new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
+				.info(new Info()
+						.title("Taris Henrique - API em SpringBoot")
+						.description("API criada em Curso da Alura")
+						.contact(new Contact()
+								.name("Taris Henrique")
+								.email("taris.tj@hotmail.com")));
 	}
 
 }

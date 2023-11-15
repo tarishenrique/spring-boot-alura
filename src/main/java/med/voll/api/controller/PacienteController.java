@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -32,7 +34,10 @@ public class PacienteController {
 
     @Autowired
     private PacienteRepository repository;
-
+    
+    @Operation(summary = "Realiza o cadastro de novos pacientes", tags = {"pacientes"})
+    @ApiResponse(responseCode = "201", description = "Paciente cadastrado com sucesso.")
+    @ApiResponse(responseCode = "403", description = "Campo obrigatório não informado")
     @PostMapping("/pacientes")
     @Transactional
     public ResponseEntity cadastrar(@RequestBody @Valid PacienteCadastrarDTO dados, UriComponentsBuilder uriBuilder) {
